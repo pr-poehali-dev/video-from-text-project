@@ -30,25 +30,29 @@ const Index = () => {
       title: 'Космическое путешествие',
       description: 'Захватывающий полёт через галактику',
       icon: 'Rocket',
-      gradient: 'from-purple-500 to-pink-500'
+      image: 'https://cdn.poehali.dev/projects/566a0628-54ce-4403-9caa-d91bbb62d2ac/files/1d909b97-a987-4de5-a7b1-c997dbc8d36f.jpg',
+      duration: '0:45'
     },
     {
       title: 'Городская жизнь',
       description: 'Динамика современного мегаполиса',
       icon: 'Building2',
-      gradient: 'from-blue-500 to-cyan-500'
+      image: 'https://cdn.poehali.dev/projects/566a0628-54ce-4403-9caa-d91bbb62d2ac/files/f1b6d891-f3bb-4414-ab78-0042eb371a5d.jpg',
+      duration: '1:20'
     },
     {
       title: 'Природа в движении',
       description: 'Красота дикой природы в 4K',
       icon: 'Trees',
-      gradient: 'from-green-500 to-emerald-500'
+      image: 'https://cdn.poehali.dev/projects/566a0628-54ce-4403-9caa-d91bbb62d2ac/files/f2267ff0-2c23-48a5-b12e-2b13c4fc02e8.jpg',
+      duration: '2:15'
     },
     {
       title: 'Абстрактное искусство',
       description: 'Плавные переходы и формы',
       icon: 'Sparkles',
-      gradient: 'from-orange-500 to-red-500'
+      image: 'https://cdn.poehali.dev/projects/566a0628-54ce-4403-9caa-d91bbb62d2ac/files/1d909b97-a987-4de5-a7b1-c997dbc8d36f.jpg',
+      duration: '1:00'
     }
   ];
 
@@ -167,17 +171,39 @@ const Index = () => {
                 className="group overflow-hidden hover-scale cursor-pointer animate-fade-in backdrop-blur-lg bg-card/50 border-2 border-primary/20 hover:border-primary/40 transition-all"
                 style={{ animationDelay: `${idx * 0.15}s` }}
               >
-                <div className={`h-48 bg-gradient-to-br ${example.gradient} relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon name={example.icon} size={64} className="text-white/80 animate-float" />
+                <div className="h-48 relative overflow-hidden">
+                  <img 
+                    src={example.image} 
+                    alt={example.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-semibold flex items-center gap-1">
+                    <Icon name="Clock" size={12} />
+                    {example.duration}
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Icon name="Play" size={48} className="text-white" />
+                    <div className="w-16 h-16 rounded-full bg-primary/90 backdrop-blur flex items-center justify-center animate-scale-in">
+                      <Icon name="Play" size={32} className="text-white ml-1" />
+                    </div>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-lg mb-1">{example.title}</h3>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="font-bold text-lg">{example.title}</h3>
+                    <Icon name={example.icon} size={20} className="text-primary shrink-0" />
+                  </div>
                   <p className="text-sm text-muted-foreground">{example.description}</p>
+                  <div className="flex items-center gap-3 mt-3 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Icon name="Eye" size={14} />
+                      <span>2.4k</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Icon name="Heart" size={14} />
+                      <span>189</span>
+                    </div>
+                  </div>
                 </div>
               </Card>
             ))}
